@@ -1,0 +1,10 @@
+{
+  "name": "Rede ATM & Bancos - Dinheiro em Tempo Real",
+  "description": "Localizador em tempo real de caixas eletrônicos (ATM) e agências bancárias com disponibilidade de dinheiro, geolocalização, mapas, avaliações da comunidade, manutenções e alertas.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
