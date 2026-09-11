@@ -15,9 +15,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-    
+
       - name: Instalar dependências
         run: npm install
+
+      - name: Instalar Capacitor
+        run: npm install @capacitor/core@7.4.4 @capacitor/android@7.4.4 @capacitor/cli@7.4.4
 
       - name: Compilar aplicação web
         env:
@@ -25,7 +28,10 @@ jobs:
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: npm run build
 
-      - name: Adicionar projeto Android
+      - name: Configurar Capacitor
+        run: npx cap init "Rede ATM & Bancos" "ao.redeatmbancos.app" --web-dir dist
+
+      - name: Adicionar Android
         run: npx cap add android
 
       - name: Sincronizar Capacitor
@@ -40,7 +46,7 @@ jobs:
       - name: Configurar Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Gerar APK de teste
+      - name: Gerar APK
         working-directory: android
         run: ./gradlew assembleDebug
 
